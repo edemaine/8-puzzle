@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { color } from '@Utils';
 
-import Waves from '@Image/waves.gif';
-
 export const GameInstruction = styled.span`
   display: block;
   float: right;
@@ -33,7 +31,6 @@ export const HeaderText = styled.div`
     font-size: 85px;
   }
 
-  background: url(${Waves}) repeat 0 0;
   width: 100%;
   text-align: center;
   color: ${color.primaryFontColor()};
