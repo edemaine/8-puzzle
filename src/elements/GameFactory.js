@@ -11,6 +11,7 @@ import {
 
 const NEW_GAME = '__new_game__';
 const RESET_GAME = '__reset_game__';
+const IMPOSSIBLE_GAME = '__impossible_game__';
 
 // [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
 const genrateArray = (num, add) => {
@@ -61,6 +62,12 @@ const genratePuzzle = (arr, event) => {
     } else {
       return genratePuzzle(shuffle(genrateArray(8, 1)), NEW_GAME);
     }
+  } else if (event === IMPOSSIBLE_GAME) {
+    if (!isSolvable(arr)) {
+      return arr;
+    } else {
+      return genratePuzzle(shuffle(genrateArray(8, 1)), IMPOSSIBLE_GAME);
+    }
   } else {
     return arr;
   }
@@ -69,7 +76,7 @@ const genratePuzzle = (arr, event) => {
 class GameFactory extends Component {
   defaultState = (_event, num) => ({
     numbers:
-      _event === NEW_GAME
+      _event === NEW_GAME || _event === IMPOSSIBLE_GAME
         ? genratePuzzle(shuffle(genrateArray(8, num)), _event)
         : shuffle(genrateArray(8, num)),
     moves: 0,
@@ -85,6 +92,16 @@ class GameFactory extends Component {
     this.setState(this.defaultState(RESET_GAME));
     setTimeout(() => {
       this.setState(this.defaultState(NEW_GAME, 1));
+      if (this.timerId) {
+        clearInterval(this.timerId);
+      }
+    }, 100);
+  };
+
+  impossible = () => {
+    this.setState(this.defaultState(RESET_GAME));
+    setTimeout(() => {
+      this.setState(this.defaultState(IMPOSSIBLE_GAME, 1));
       if (this.timerId) {
         clearInterval(this.timerId);
       }
@@ -197,6 +214,7 @@ class GameFactory extends Component {
         <SetValueContext.Provider
           value={{
             resetGame: this.reset,
+            impossibleGame: this.impossible,
             setTimer: this.setTimer,
             gettingEmptyBoxLocation: this.gettingEmptyBoxLocation,
             moveCell: this.move,

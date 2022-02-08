@@ -29,6 +29,7 @@ export default class Game extends Component {
       <div>
         <GameScore>
           <Button onClick={this.props.resetGame}>new game</Button>
+          <Button onClick={this.props.impossibleGame}>impossible</Button>
           <Score moves={this.props.moves} seconds={this.props.seconds} />
         </GameScore>
 
