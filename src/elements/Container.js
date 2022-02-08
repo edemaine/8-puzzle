@@ -12,7 +12,7 @@ export const Container = styled.div`
 
 export const GridContainer = styled.div`
   margin: 5px 0;
-  grid-template-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto;
   display: grid;
   position: relative;
   padding: 15px;
@@ -63,18 +63,15 @@ export const PlayPauseContainer = styled.div`
 `;
 
 export const CellContainer = styled.div`
-  width: 106.25px;
-  height: 106.25px;
   margin-right: 15px;
+  margin-bottom: 15px;
   border-radius: 10px;
   background-color: ${color.gridTileColor};
   @media screen and (max-width: 520px) {
-    width: 57.5px;
-    height: 57.5px;
     margin-right: 10px;
+    margin-bottom: 10px;
   }
   &:last-child {
-    margin-right: 0;
   }
 `;
 
@@ -95,14 +92,14 @@ export const NumberCellContainer = styled.div`
   text-align: center;
   font-weight: bold;
   z-index: 10;
-  font-size: 75px;
-  width: 107px;
+  font-size: 125px;
+  width: 141px;
+  height: 141px;
   ${transition({ property: 'transform' })};
 
   animation-duration: 0.75s;
   animation-name: ${bounceIn};
 
-  height: 107px;
   transform: ${({ x = 0, y = 0 }) => `translate3d(${x}px, ${y}px, 0)`};
   .ball-1,
   .ball-2 {
@@ -127,7 +124,7 @@ export const NumberCellContainer = styled.div`
   }
   .shadow {
     color: ${props => (props.index === props.number ? '  #CD583A' : '#499591')};
-    font-size: 90px;
+    font-size: 145px;
     margin-left: ${props =>
       props.number.toString().length == 2
         ? props.number === 11
@@ -136,21 +133,21 @@ export const NumberCellContainer = styled.div`
         : props.number === 1
         ? -10
         : 0}px;
-    margin-top: ${props => (props.number.toString().length == 2 ? -21 : -19)}px;
+    margin-top: ${props => (props.number.toString().length == 2 ? -21 : -26)}px;
   }
   .number {
     color: white;
     z-index: 99;
     position: absolute;
-    top: -22px;
-    left: ${props => (props.number.toString().length == 2 ? 15 : 32)}px;
+    top: -52px;
+    left: ${props => (props.number.toString().length == 2 ? 19 : 40)}px;
   }
 
   @media screen and (max-width: 520px) {
-    width: 58px;
-    height: 58px;
+    width: 76px;
+    height: 76px;
     line-height: 67.5px;
-    font-size: 45px;
+    font-size: 65px;
     padding-top: 9px;
     padding-left: ${props => (props.number === 1 ? 3 : 0)}px;
     border-radius: 5px;
@@ -168,7 +165,7 @@ export const NumberCellContainer = styled.div`
       right: 7px;
     }
     .shadow {
-      font-size: 53px;
+      font-size: 75px;
       margin-left: ${props =>
         props.number.toString().length == 2
           ? props.number === 11
@@ -181,8 +178,8 @@ export const NumberCellContainer = styled.div`
         props.number.toString().length == 2 ? -20 : -19}px;
     }
     .number {
-      top: -14px;
-      left: ${props => (props.number.toString().length == 2 ? 7 : 16)}px;
+      top: 0px;
+      left: ${props => (props.number.toString().length == 2 ? 20 : 20)}px;
     }
   }
 `;

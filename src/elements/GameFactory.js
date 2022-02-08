@@ -24,7 +24,7 @@ const SetValueContext = createContext(() => {});
 
 const isSolvable = puzzle => {
   let parity = 0;
-  let gridWidth = 4;
+  let gridWidth = 3;
   let row = 0;
   let blankRow = 0;
   for (let i = 0; i < puzzle.length; i++) {
@@ -59,7 +59,7 @@ const genratePuzzle = (arr, event) => {
     if (isSolvable(arr)) {
       return arr;
     } else {
-      return genratePuzzle(shuffle(genrateArray(15, 1)), NEW_GAME);
+      return genratePuzzle(shuffle(genrateArray(8, 1)), NEW_GAME);
     }
   } else {
     return arr;
@@ -70,8 +70,8 @@ class GameFactory extends Component {
   defaultState = (_event, num) => ({
     numbers:
       _event === NEW_GAME
-        ? genratePuzzle(shuffle(genrateArray(15, num)), _event)
-        : shuffle(genrateArray(15, num)),
+        ? genratePuzzle(shuffle(genrateArray(8, num)), _event)
+        : shuffle(genrateArray(8, num)),
     moves: 0,
     seconds: 0,
     gameState: gameState.GAME_IDLE
@@ -93,8 +93,8 @@ class GameFactory extends Component {
 
   gettingEmptyBoxLocation = () => {
     let location = this.state.numbers.indexOf(0);
-    let column = Math.floor(location % 4);
-    let row = Math.floor(location / 4);
+    let column = Math.floor(location % 3);
+    let row = Math.floor(location / 3);
     return [row, column, location];
   };
 

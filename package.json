@@ -6,8 +6,8 @@
     "start": "parcel index.html",
     "build": "parcel build index.html --public-url ./"
   },
-  "author": "Shubham",
-  "license": "ISC",
+  "author": "Erik Demaine",
+  "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.17.2",
     "react": "^16.14.0",

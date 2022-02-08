@@ -11,10 +11,10 @@ export const swap = (arr, from, to) => {
 };
 
 export const isNeighbour = (to, from) => {
-  let emptyColumn = Math.floor(to % 4);
-  let emptyRow = Math.floor(to / 4);
-  let clickedColumn = Math.floor(from % 4);
-  let clickedRow = Math.floor(from / 4);
+  let emptyColumn = Math.floor(to % 3);
+  let emptyRow = Math.floor(to / 3);
+  let clickedColumn = Math.floor(from % 3);
+  let clickedRow = Math.floor(from / 3);
 
   const sameRow = emptyRow === clickedRow;
   const sameColumn = emptyColumn === clickedColumn;
@@ -36,10 +36,10 @@ export const swapSpace = (arr, from, row, col, move) => {
   let xMove = move === 3 ? 1 : move === 1 ? -1 : 0;
   let newRow = row + yMove;
   let newCol = col + xMove;
-  if (newRow <= -1 || newCol <= -1 || newRow >= 4 || newCol >= 4) {
+  if (newRow <= -1 || newCol <= -1 || newRow >= 3 || newCol >= 3) {
     return [false, arr];
   }
-  let to = newRow * 4 + newCol;
+  let to = newRow * 3 + newCol;
   return [true, swap(arr, from, to)];
 };
 

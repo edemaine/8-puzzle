@@ -29,8 +29,10 @@ export default class Cell extends Component {
             this.props.clickMove(index);
           }}
         >
+          {/*
           <div className="ball-1" />
           <div className="ball-2" />
+          */}
           <div className="number">{number}</div>
           <div className="shadow">{number}</div>
         </NumberCellContainer>
