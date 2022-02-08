@@ -142,6 +142,9 @@ export const NumberCellContainer = styled.div`
     top: -52px;
     left: ${props => (props.number.toString().length == 2 ? 19 : 40)}px;
   }
+  .shadow, .number {
+    pointer-events: none;
+  }
 
   @media screen and (max-width: 520px) {
     width: 76px;
